@@ -1,6 +1,16 @@
 FROM rafaelri/buildbot-worker-stretch
 USER root
-RUN apt-get update && apt-get install -y docker make build-essential libssl-dev zlib1g-dev libbz2-dev \
+RUN apt-get update && apt-get -y install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+    echo "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable" \
+    >> /etc/apt/sources.list
+RUN apt-get update && apt-get install -y docker-ce-cli make build-essential libssl-dev zlib1g-dev libbz2-dev \
      libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
      xz-utils tk-dev libffi-dev liblzma-dev python-openssl git && \
      rm -rf /var/lib/apt/lists/*
