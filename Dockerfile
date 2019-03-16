@@ -12,7 +12,7 @@ RUN git clone --depth 1 https://github.com/yyuu/pyenv.git ~/.pyenv && \
     rm -rf ~/.pyenv/.git && \
       echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
       echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
-      echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc && \
+      echo 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc && \
       mkdir -p ${HOME}/.pyenv/versions && \
       mkdir -p ${HOME}/.pyenv/shims
 RUN git clone https://github.com/pyenv/pyenv-virtualenv.git ${HOME}/.pyenv/plugins/pyenv-virtualenv && \
