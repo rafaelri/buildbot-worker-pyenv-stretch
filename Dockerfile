@@ -1,10 +1,10 @@
 FROM rafaelri/buildbot-worker-stretch
 USER root
-RUN apt-get update && apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+RUN apt-get update && apt-get install -y docker make build-essential libssl-dev zlib1g-dev libbz2-dev \
      libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
      xz-utils tk-dev libffi-dev liblzma-dev python-openssl git && \
      rm -rf /var/lib/apt/lists/*
-
+RUN chmod u+s /usr/bin/docker
 RUN echo 'export PATH=${HOME}/.pyenv/bin:$PATH' >> /etc/profile
 USER buildbot
 ENV PYENV_ROOT="${HOME}/.pyenv"
